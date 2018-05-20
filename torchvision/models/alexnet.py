@@ -13,7 +13,7 @@ model_urls = {
 class AlexNet(nn.Module):
 
     def __init__(self, num_classes=1000):
-        super(AlexNet, self).__init__()
+        super(AlexNet, self).__init__() # super can be used to refer to parent classes without naming them explicitly
         self.features = nn.Sequential(
             nn.Conv2d(3, 64, kernel_size=11, stride=4, padding=2),
             nn.ReLU(inplace=True),
@@ -53,7 +53,7 @@ def alexnet(pretrained=False, **kwargs):
     Args:
         pretrained (bool): If True, returns a model pre-trained on ImageNet
     """
-    model = AlexNet(**kwargs)
+    model = AlexNet(**kwargs) #  **kwargs , it receives a dictionary containing all keyword arguments.
     if pretrained:
         model.load_state_dict(model_zoo.load_url(model_urls['alexnet']))
     return model
